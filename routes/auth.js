@@ -38,8 +38,7 @@ router.post("/login", async (req, res, next) => {
 router.post("/register", async (req, res, next) => {
   try {
     const { username } = req.body;
-    const result = await User.register(req.body);
-    await User.updateLoginTimestamp(username);
+    const result = await User.register(username);
     return res.json({ result });
   } catch (error) {
     return next(error);
